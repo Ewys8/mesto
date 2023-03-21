@@ -38,19 +38,6 @@
 
 @import url(../blocks/like-button/like-button.css);
 
+@import url(../blocks/footer/footer.css);
 
-.footer {
-  width: 100%;
-  margin: 66px auto 60px;
-}
-
-.footer__copyright {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.22;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #545454;
-
-}
+@import url(../blocks/footer/__copyright/footer__copyright.css);
