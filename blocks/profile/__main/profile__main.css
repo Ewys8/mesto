@@ -3,3 +3,9 @@
   gap: 30px;
   align-items: center;
 }
+
+@media (max-width: 930px) {
+  .profile__main {
+    flex-direction: column;
+  }
+}
