@@ -1,5 +1,5 @@
 const userInfoEditButton = document.querySelector('.profile__edit-button');
-const userInfoEditPopup = document.querySelector('.popup');
+const popupProfile = document.querySelector('.popup');
 const popupCloseButton = document.querySelector('.popup__close-button');
 const nameInput = document.querySelector('.popup__input_type_name');
 const descriptionInput = document.querySelector('.popup__input_type_description');
@@ -9,7 +9,7 @@ const userDescription = document.querySelector('.profile__description');
 const userInfoEditForm = document.querySelector('.popup__form');
 
 function editPopup() {
-  userInfoEditPopup.classList.add('popup_open');
+  popupProfile.classList.add('popup_opened');
   nameInput.value = userName.textContent;
   descriptionInput.value = userDescription.textContent;
 };
@@ -17,7 +17,7 @@ function editPopup() {
 userInfoEditButton.addEventListener('click', () => editPopup());
 
 function closePopup() {
-  userInfoEditPopup.classList.remove('popup_open');
+  popupProfile.classList.remove('popup_opened');
 };
 
 popupCloseButton.addEventListener('click', () => closePopup());
@@ -27,8 +27,6 @@ popupCloseButton.addEventListener('click', () => closePopup());
 userInfoEditForm.addEventListener('submit', (event) => {
   event.preventDefault();
   closePopup();
-  const name = nameInput.value;
-  userName.textContent = name;
-  const description = descriptionInput.value;
-  userDescription.textContent = description;
+  userName.textContent = nameInput.value;
+  userDescription.textContent = descriptionInput.value;
 });
