@@ -75,7 +75,7 @@
   </footer>
   <section class="popup popup__type_edit">
     <div class="popup__container">
-      <button type="button" class="popup__close-button popup__close-button" aria-label="Закрыть"></button>
+      <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__edit-form" name="userData">
         <input type="text" name="userName" class="popup__input popup__input_type_name" placeholder="Ваше имя" maxlength="30" minlength="2">
@@ -84,17 +84,15 @@
       </form>
     </div>
   </section>
-  <section class="popup popup_type_add">
-    <div class="popup__content">
-      <div role="button" class="popup__close-button"></div>
-      <p class="popup__title">Редактировать профиль</p>
-      <div class="popup__forms">
-          <input type="text" class="popup__input popup__input_type_name" placeholder="Ваше имя">
-          <input type="text" class="popup__input popup__input_type_description" placeholder="О себе">
-      </div>
-      <div role="button" class="popup__save-button">
-        <p class="popup__save-button__title">Сохранить</p>
-      </div>
+  <section class="popup popup__type_add">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button" aria-label="Закрыть"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__add-form" name="userData">
+        <input type="text" name="placeName" class="popup__input popup__input_type_place-name" placeholder="Название" maxlength="30" minlength="2">
+        <input type="text" name="placeURL" class="popup__input popup__input_type_place-url" placeholder="Ссылка на картинку" maxlength="100" minlength="5">
+        <button type="submit" class="popup__add-card">Создать</button>
+      </form>
     </div>
   </section>
 </body>

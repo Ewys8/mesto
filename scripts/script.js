@@ -38,3 +38,4 @@ userInfoEditForm.addEventListener('submit', (event) => {
 });
 
 const popupAddCard = document.querySelector('.popup__type_add');
+const addCardButton = document.querySelector('.profile__edit-button');
