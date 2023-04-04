@@ -5,6 +5,7 @@
   line-height: 1.2;
   letter-spacing: 0em;
   text-align: left;
+  padding-bottom: 54px;
 }
 
 @media (max-width: 600px) {
