@@ -1,32 +1,40 @@
 const userInfoEditButton = document.querySelector('.profile__edit-button');
-const popupProfile = document.querySelector('.popup');
+const popupEditProfile = document.querySelector('.popup__type_edit');
 const popupCloseButton = document.querySelector('.popup__close-button');
 const nameInput = document.querySelector('.popup__input_type_name');
 const descriptionInput = document.querySelector('.popup__input_type_description');
 const userName = document.querySelector('.profile__name');
 const userDescription = document.querySelector('.profile__description');
 
-const userInfoEditForm = document.querySelector('.popup__form');
+const userInfoEditForm = document.querySelector('.popup__edit-form');
+
+function openPopup(popupName) {
+  popupName.classList.add('popup_opened');
+};
+
+function closePopup(popupName) {
+  popupName.classList.remove('popup_opened');
+};
+
 
 function editPopup() {
-  popupProfile.classList.add('popup_opened');
+  openPopup(popupEditProfile);
   nameInput.value = userName.textContent;
   descriptionInput.value = userDescription.textContent;
 };
 
 userInfoEditButton.addEventListener('click', () => editPopup());
 
-function closePopup() {
-  popupProfile.classList.remove('popup_opened');
-};
 
-popupCloseButton.addEventListener('click', () => closePopup());
+popupCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
 
 
 
 userInfoEditForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  closePopup();
+  closePopup(popupEditProfile);
   userName.textContent = nameInput.value;
   userDescription.textContent = descriptionInput.value;
 });
+
+const popupAddCard = document.querySelector('.popup__type_add');
