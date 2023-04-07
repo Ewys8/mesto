@@ -1,5 +1,5 @@
 //записываем данные относящиеся к popupEdit в переменные
-const popupEditProfile = document.querySelector('.popup__edit'); //попап редактирования профиля
+const popupEditProfile = document.querySelector('.popup_type_edit'); //попап редактирования профиля
 
 const userName = document.querySelector('.profile__name'); //имя пользователя
 
@@ -52,7 +52,7 @@ userInfoEditForm.addEventListener('submit', (event) => {
 //записываем данные относящиеся к popupAdd в переменные
 
 
-const popupAddCard = document.querySelector('.popup__add'); //попап добавления карточки
+const popupAddCard = document.querySelector('.popup_type_add'); //попап добавления карточки
 
 const popupAddCardButton = document.querySelector('.profile__add-button'); //кнопка добавления новой карточки
 
@@ -71,7 +71,7 @@ const gallery = document.querySelector('.gallery') //галерея
 
 //записываем данные относящиеся к popupFigure в переменные
 
-const popupFigure = document.querySelector('.popup__figure'); //попап просмотра картинки
+const popupFigure = document.querySelector('.popup_type_figure'); //попап просмотра картинки
 
 const popupImage = document.querySelector('.popup__image'); //сама картинка
 
