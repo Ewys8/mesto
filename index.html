@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Александр Никишин">
-    <script defer src="./scripts/script.js"></script>
+    <script defer src="./scripts/script.js" type="module"></script>
     <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
@@ -36,8 +36,8 @@
       <button type="button" class="popup__close-button popup__close-button_profile" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__edit-form" name="userData">
-        <input type="text" name="userName" class="popup__input popup__input_type_name" placeholder="Ваше имя" maxlength="30" minlength="2">
-        <input type="text" name="userDescription" class="popup__input popup__input_type_description" placeholder="О себе" maxlength="70" minlength="2">
+        <input type="text" name="userName" class="popup__input popup__input_type_name" required placeholder="Ваше имя" maxlength="30" minlength="2">
+        <input type="text" name="userDescription" class="popup__input popup__input_type_description" required placeholder="О себе" maxlength="70" minlength="2">
         <button type="submit" class="popup__submit-button">Сохранить</button>
       </form>
     </div>
@@ -47,8 +47,8 @@
       <button type="button" class="popup__close-button popup__close-button_card" aria-label="Закрыть"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__add-form" name="addCard">
-        <input type="text" name="placeName" class="popup__input popup__input_type_card-name" placeholder="Название" maxlength="30" minlength="2">
-        <input type="text" name="placeURL" class="popup__input popup__input_type_card-url" placeholder="Ссылка на картинку" maxlength="300" minlength="5">
+        <input type="text" name="placeName" class="popup__input popup__input_type_card-name" required placeholder="Название" maxlength="30" minlength="2">
+        <input type="url" name="placeURL" class="popup__input popup__input_type_card-url" required placeholder="Ссылка на картинку">
         <button type="submit" class="popup__submit-button">Создать</button>
       </form>
     </div>

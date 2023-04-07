@@ -3,5 +3,11 @@
   height: 282px;
   object-fit: cover;
   border-radius: 10px 10px 0 0;
-  padding-bottom: 25px;
+  margin-bottom: 25px;
+  background-color: black;
+  color: white;
+}
+
+.card__photo:hover {
+  cursor: pointer;
 }

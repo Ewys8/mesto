@@ -1,3 +1,5 @@
+import { cards } from "./constants.js"; //импортируем данные карточек
+
 //записываем данные относящиеся к popupEdit в переменные
 const popupEditProfile = document.querySelector('.popup_type_edit'); //попап редактирования профиля
 
@@ -27,14 +29,14 @@ function closePopup(popupName) {
 };
 
 //задаем функцию открытия попапа с заполненнными полями информации о пользователе
-function editPopup() {
+function openEditPopup() {
   openPopup(popupEditProfile);
   nameInput.value = userName.textContent;
   descriptionInput.value = userDescription.textContent;
 };
 
 //вешаем событие на кнопку редактирования профиля
-userInfoEditButton.addEventListener('click', () => editPopup());
+userInfoEditButton.addEventListener('click', () => openEditPopup());
 
 //вешаем событие на кнопку закрытие попапа редактирования профиля
 profileCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
@@ -54,7 +56,7 @@ userInfoEditForm.addEventListener('submit', (event) => {
 
 const popupAddCard = document.querySelector('.popup_type_add'); //попап добавления карточки
 
-const popupAddCardButton = document.querySelector('.profile__add-button'); //кнопка добавления новой карточки
+const popupAddCardOpenButton = document.querySelector('.profile__add-button'); //кнопка добавления новой карточки
 
 const cardAddCloseButton = document.querySelector('.popup__close-button_card'); //кнопка закрытия попапа добавления карточки
 
@@ -67,6 +69,7 @@ const cardURLInput = cardAddForm.querySelector('.popup__input_type_card-url'); /
 const cardTemplate = document.querySelector('#card-template') //темплейт
 
 const gallery = document.querySelector('.gallery') //галерея
+
 
 
 //записываем данные относящиеся к popupFigure в переменные
@@ -82,39 +85,8 @@ const figureCloseButton = document.querySelector('.popup__close-button_figure');
 //вешаем событие на кнопку закрытия попапа просмотра карточки
 figureCloseButton.addEventListener('click', () => closePopup(popupFigure));
 
-
-
-
-//записываем объекты карточек в массив
-const cards = [
-  {
-    cardName: "Дудинка",
-    picturelUrl: "./images/Dudinka.jpg",
-  },
-  {
-    cardName: "Колпино",
-    picturelUrl: "./images/kolpino.jpg",
-  },
-  {
-    cardName: "Царское Село",
-    picturelUrl: "./images/tsarskoeSelo.jpg",
-  },
-  {
-    cardName: "Великий Новгород",
-    picturelUrl: "./images/Novgorod.jpg",
-  },
-  {
-    cardName: "Старая Ладога",
-    picturelUrl: "./images/starayaLadoga.jpg",
-  },
-  {
-    cardName: "Трубников Бор",
-    picturelUrl: "./images/Truba.jpg",
-  },
-];
-
 //вешаем событие открытия попапа на кнопку добавления карточки
-popupAddCardButton.addEventListener('click', () => openPopup(popupAddCard));
+popupAddCardOpenButton.addEventListener('click', () => openPopup(popupAddCard));
 
 //вешаем событие на кнопку закрытия попапа добавления карточки
 cardAddCloseButton.addEventListener('click', () => closePopup(popupAddCard));
@@ -178,6 +150,9 @@ cardAddForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const cardName = cardNameInput.value;
   const picturelUrl = cardURLInput.value;
+
+  //очищаем поля формы
+  cardAddForm.reset();
 
   const cardData =   {
     cardName,
