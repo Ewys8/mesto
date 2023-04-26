@@ -18,14 +18,26 @@ const nameInput = document.querySelector('.popup__input_type_name'); //инпу�
 const descriptionInput = document.querySelector('.popup__input_type_description'); //инпут userDescription
 
 
+
+
 //задаем универсальную функцию открытия попапа
 function openPopup(popupName) {
   popupName.classList.add('popup_opened');
+  document.addEventListener("keydown", closePopupByEsc);
 };
 
 //задаем универсальную функцию закрытия попапа
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
+  document.removeEventListener("keydown", closePopupByEsc);
+};
+
+
+function closePopupByEsc(event) {
+  if (event.key === "Escape") {
+    const popupOpened = document.querySelector('.popup_opened')
+    closePopup(popupOpened);
+  }
 };
 
 //задаем функцию открытия попапа с заполненнными полями информации о пользователе
@@ -162,4 +174,17 @@ cardAddForm.addEventListener('submit', (event) => {
   renderCardElement(createCardElement(cardData));
 
   closePopup(popupAddCard); //закрыть попап
+});
+
+
+
+
+const popupsArray = Array.from(document.querySelectorAll('.popup'))
+
+popupsArray.forEach((popup) => {
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains("popup__close-button")) {
+      closePopup(popup);
+    }
+  });
 });
