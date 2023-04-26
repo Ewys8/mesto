@@ -17,9 +17,6 @@ const nameInput = document.querySelector('.popup__input_type_name'); //инпу�
 
 const descriptionInput = document.querySelector('.popup__input_type_description'); //инпут userDescription
 
-
-
-
 //задаем универсальную функцию открытия попапа
 function openPopup(popupName) {
   popupName.classList.add('popup_opened');
@@ -31,7 +28,6 @@ function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
   document.removeEventListener("keydown", closePopupByEsc);
 };
-
 
 function closePopupByEsc(event) {
   if (event.key === "Escape") {
@@ -53,7 +49,6 @@ userInfoEditButton.addEventListener('click', () => openEditPopup());
 //вешаем событие на кнопку закрытие попапа редактирования профиля
 profileCloseButton.addEventListener('click', () => closePopup(popupEditProfile));
 
-
 //вешаем событие на форму редактирования профиля
 userInfoEditForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -62,10 +57,7 @@ userInfoEditForm.addEventListener('submit', (event) => {
   userDescription.textContent = descriptionInput.value;
 });
 
-
 //записываем данные относящиеся к popupAdd в переменные
-
-
 const popupAddCard = document.querySelector('.popup_type_add'); //попап добавления карточки
 
 const popupAddCardOpenButton = document.querySelector('.profile__add-button'); //кнопка добавления новой карточки
@@ -82,10 +74,7 @@ const cardTemplate = document.querySelector('#card-template') //темплейт
 
 const gallery = document.querySelector('.gallery') //галерея
 
-
-
 //записываем данные относящиеся к popupFigure в переменные
-
 const popupFigure = document.querySelector('.popup_type_figure'); //попап просмотра картинки
 
 const popupImage = document.querySelector('.popup__image'); //сама картинка
@@ -103,7 +92,6 @@ popupAddCardOpenButton.addEventListener('click', () => openPopup(popupAddCard));
 //вешаем событие на кнопку закрытия попапа добавления карточки
 cardAddCloseButton.addEventListener('click', () => closePopup(popupAddCard));
 
-
 //задаем функцию создания карточки
 const createCardElement = (cardData) => {
   const cardElement = cardTemplate.content.querySelector('.card').cloneNode(true); //копия карточки из темплейта
@@ -118,7 +106,6 @@ const createCardElement = (cardData) => {
   cardTitle.textContent = cardData.cardName;
   cardPhoto.src = cardData.picturelUrl;
   cardPhoto.alt = cardData.cardName;
-
 
   const handleDelete = () => {
     cardElement.remove();
@@ -176,10 +163,7 @@ cardAddForm.addEventListener('submit', (event) => {
   closePopup(popupAddCard); //закрыть попап
 });
 
-
-
-
-const popupsArray = Array.from(document.querySelectorAll('.popup'))
+const popupsArray = Array.from(document.querySelectorAll('.popup'))//псевдомассив попапов
 
 popupsArray.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {

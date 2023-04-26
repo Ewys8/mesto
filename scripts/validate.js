@@ -12,9 +12,7 @@ function hideInputError(config, input, errorElement) {
 
 //функция проверяет инпут на валидность
 function checkInputValidity(config, input, form) {
-
   const errorElement = form.querySelector(`#error-${input.id}`)
-
   if (input.validity.valid) {
     hideInputError(config, input, errorElement);
   } else {
@@ -22,20 +20,19 @@ function checkInputValidity(config, input, form) {
   }
 };
 
-
 //неактивная кнопка сабмита
 function setButtonDisable(config, button) {
     button.setAttribute('disabled', '');
     button.classList.add(config.inactiveButtonClass);
 };
+
 //активная кнопка сабмита
 function setButtonEnable(config, button) {
   button.removeAttribute('disabled');
   button.classList.remove(config.inactiveButtonClass);
 };
 
-
-//функция переключающая состояния
+//функция переключающая состояния сабмита
 function toggleButtonValidity(config, form) {
   const popupSubmitButton = form.querySelector(config.submitButtonSelector)
 
@@ -52,7 +49,6 @@ function enableValidation (config) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
     });
-
     const inputs = Array.from(form.querySelectorAll(config.inputSelector));//записываем все инпуты в псевдомассив
     inputs.forEach( (input) => {
       input.addEventListener('input', () => {
@@ -62,7 +58,6 @@ function enableValidation (config) {
     });
   });
 };
-
 
 enableValidation({
 formSelector: '.form',
