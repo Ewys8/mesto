@@ -159,8 +159,10 @@ cardAddForm.addEventListener('submit', (event) => {
   };
 
   renderCardElement(createCardElement(cardData));
-
   closePopup(popupAddCard); //закрыть попап
+  event.target.reset();
+  event.submitter.classList.add('popup__submit-button_disabled');
+  event.submitter.disabled = true;
 });
 
 const popupsArray = Array.from(document.querySelectorAll('.popup'))//псевдомассив попапов

@@ -10,7 +10,7 @@
   outline: none;
   padding-bottom: 13px;
   box-sizing: border-box;
-  margin-top: 30px;
+  margin: 0;
 }
 
 .popup__input:first-of-type {

@@ -43,19 +43,24 @@ function toggleButtonValidity(config, form) {
   }
 };
 
-function enableValidation (config) {
+const setEventListeners = (config, form) => {
+  const inputs = Array.from(form.querySelectorAll(config.inputSelector));
+  toggleButtonValidity(config, form);
+  inputs.forEach((input) => {
+    input.addEventListener('input', function () {
+      checkInputValidity(config, input, form);
+      toggleButtonValidity(config, form);
+    });
+  });
+};
+
+function enableValidation (config, form) {
   const forms = Array.from(document.querySelectorAll(config.formSelector)); //записываем все формы в псевдомассив
   forms.forEach((form) => {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
     });
-    const inputs = Array.from(form.querySelectorAll(config.inputSelector));//записываем все инпуты в псевдомассив
-    inputs.forEach( (input) => {
-      input.addEventListener('input', () => {
-            checkInputValidity(config, input, form);
-            toggleButtonValidity(config, form);
-      });
-    });
+    setEventListeners(config, form)
   });
 };
 
