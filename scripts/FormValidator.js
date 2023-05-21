@@ -41,6 +41,13 @@ _setButtonEnable() {
   this.popupSubmitButton.classList.remove(this.config.inactiveButtonClass);
 };
 
+hideError(form) {
+  this.inputs.forEach((inputElement) => {
+    this._hideInputError(inputElement);
+  });
+  this._setButtonDisable();
+};
+
 //функция переключающая состояния сабмита
 _toggleButtonValidity() {
 if (this.form.checkValidity()) {
@@ -49,15 +56,21 @@ if (this.form.checkValidity()) {
   this._setButtonDisable();
 }
 };
-    _setEventListeners = () => {
+
+//ставим слушатели
+_setEventListeners = () => {
+  this.inputs.forEach((input) => {
+    input.addEventListener('input', () => {
+      this._checkInputValidity(input);
       this._toggleButtonValidity();
-      this.inputs.forEach((input) => {
-        input.addEventListener('input', () => {
-          this._checkInputValidity(input);
-          this._toggleButtonValidity();
-        });
-      });
-    };
+    });
+  });
+  this.form.addEventListener('submit', (event) => {
+    event.target.reset();
+    event.submitter.classList.add('popup__submit-button_disabled');
+    event.submitter.disabled = true;
+  })
+};
 
   //метод enableValidation, чтобы включить валидацию
   enableValidation = () => {
