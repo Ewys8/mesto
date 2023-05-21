@@ -1,27 +1,37 @@
 const cards = [
   {
-    cardName: "Дудинка",
-    picturelUrl: "./images/Dudinka.jpg",
+    name: "Дудинка",
+    link: "./images/Dudinka.jpg",
   },
   {
-    cardName: "Колпино",
-    picturelUrl: "./images/kolpino.jpg",
+    name: "Колпино",
+    link: "./images/kolpino.jpg",
   },
   {
-    cardName: "Царское Село",
-    picturelUrl: "./images/tsarskoeSelo.jpg",
+    name: "Царское Село",
+    link: "./images/tsarskoeSelo.jpg",
   },
   {
-    cardName: "Великий Новгород",
-    picturelUrl: "./images/Novgorod.jpg",
+    name: "Великий Новгород",
+    link: "./images/Novgorod.jpg",
   },
   {
-    cardName: "Старая Ладога",
-    picturelUrl: "./images/starayaLadoga.jpg",
+    name: "Старая Ладога",
+    link: "./images/starayaLadoga.jpg",
   },
   {
-    cardName: "Трубников Бор",
-    picturelUrl: "./images/Truba.jpg",
+    name: "Трубников Бор",
+    link: "./images/Truba.jpg",
   },
 ];
-export { cards };
+
+const config = {
+  formSelector: '.form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__input_invalid',
+  errorClass: 'error-message_active'
+  };
+
+export { cards, config };

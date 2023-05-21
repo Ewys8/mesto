@@ -5,6 +5,7 @@
 * HTML
 * CSS
 * JS
+* ООП
 
 **GitHub**
 
