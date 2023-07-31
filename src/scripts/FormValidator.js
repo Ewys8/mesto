@@ -1,4 +1,4 @@
-class FormValidator { //принимает  конфиг и форму
+export default class FormValidator { //принимает  конфиг и форму
   constructor (config, form) {
     this.config = config;
     this.form = form;
@@ -39,6 +39,13 @@ _setButtonDisable() {
 _setButtonEnable() {
   this.popupSubmitButton.removeAttribute('disabled');
   this.popupSubmitButton.classList.remove(this.config.inactiveButtonClass);
+};
+
+hideError(form) {
+  this.inputs.forEach((inputElement) => {
+    this._hideInputError(inputElement);
+  });
+  this._setButtonDisable();
 };
 
 //функция переключающая состояния сабмита
