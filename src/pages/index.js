@@ -10,42 +10,27 @@ import UserInfo from '../components/UserInfo.js';
 
 import './index.css';
 
-// теперь картинки можно импортировать,
-// вебпак добавит в переменные правильные пути
-/*import Dudinka from '../images/Dudinka.jpg';
-import Kolpino from '../images/kolpino.jpg';
-import Truba from '../images/Truba.jpg';
-import Novgorod from '../images/Novgorod.jpg';
-import StarayaLadoga from '../images/starayaLadoga.jpg';
-import TsarskoeSelo from '../images/tsarskoeSelo.jpg';
-
-/*const whoIsTheGoat = [
-  // меняем исходные пути на переменные
-  { name: 'Dudinka', link: Dudinka },
-  { name: 'Kolpino', link: Kolpino },
-  { name: 'Truba', link: Truba },
-];*/
-
 const userInfo = new UserInfo(configProfile);
 
 //задаем функцию создания карточки
 const createCardElement = (data) => {
   const card = new Card(data, templateSelector, openFigurePopup); //создаём экземпляр карточки
-  const cardElement = card.generateCard(); //создаём карточку и возвращаем её на страницу
-  return cardElement;
+  return card.generateCard(); //создаём карточку и возвращаем её на страницу
 };
 
 //функция открытия попапа с картинкой
 const openFigurePopup = (name, link) => {
-  const popupWithImage = new PopupWithImage(popupFigure, name, link);
+  const popupWithImage = new PopupWithImage('.popup_type_figure');
   popupWithImage.setEventListeners();
-  popupWithImage.open();
+  popupWithImage.open(name, link);
 };
 
 //создадим класс, который будет заносить карточки в галерею
 const renderCardElement = new Section({
   items: cards,
-  renderer: (item) => createCardElement(item),
+  renderer: (item) => {
+    renderCardElement.addItem(createCardElement(item));
+  },
 },
 gallery
 );
@@ -53,17 +38,17 @@ gallery
 renderCardElement.createDataArray();
 
 const popupNewCardClass = new PopupWithForm(
-  popupAddCard,
+  '.popup_type_add',
   addCardSubmitHandler
 );
 // добаление обработчиков событий для попапа
 popupNewCardClass.setEventListeners();
 
 //функция обработчик для сабмита попапа добавления карточки
-function addCardSubmitHandler(event) {
-
-  const name = cardNameInput.value;
-  const link = cardURLInput.value;
+function addCardSubmitHandler(formData) {
+  console.log(formData);
+  const name = formData.placeName;
+  const link = formData.placeURL;
   cardAddForm.reset();//очищаем поля формы
 
   const cardData = {
@@ -83,18 +68,19 @@ popupAddCardOpenButton.addEventListener('click', () => {
 );
 
 //функция обработчик для сабмита попапа редактирования профиля
-const editPopupSubmitHandler = () => {
+const editPopupSubmitHandler = (formData) => {
   //добавление данных из формы на страницу
   userInfo.setUserInfo({
-    newName: nameInput.value,
-    newDescription: descriptionInput.value
+    newName: formData.userName,
+    newDescription: formData.userDescription
+
   })
   //закрытие формы
   popupEditProfileClass.close();
 };
 
 const popupEditProfileClass = new PopupWithForm(
-  popupEditProfile,
+  '.popup_type_edit',
   editPopupSubmitHandler
 );
 // добаление обработчиков событий для попапа

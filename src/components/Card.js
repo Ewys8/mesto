@@ -13,8 +13,7 @@ export default class Card {
 
   //получаем темплейт карточки
   _getTemplate() {
-    const cardElement = this._templateSelector.content.querySelector('.card').cloneNode(true);
-    return cardElement;
+    return this._templateSelector.content.querySelector('.card').cloneNode(true);
   };
 
   //метод подстановки данных в темплейт и установки обработчиков событий

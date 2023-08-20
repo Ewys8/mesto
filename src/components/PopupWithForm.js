@@ -9,7 +9,9 @@ export default class PopupWithForm extends Popup {
     }
     _getInputValues() {
         this._valuesArray = {};
+         // Проходим по всем полям ввода формы
         this._inputList.forEach(input => {
+          // Добавляем значение поля в объект по его имени
             this._valuesArray[input.name] = input.value;
         });
         return this._valuesArray
@@ -18,7 +20,6 @@ export default class PopupWithForm extends Popup {
     setUserValue(data) {
         this._inputList.forEach(input => {
             input.value = data[input.name];
-
         })
     }
 
