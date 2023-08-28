@@ -17,11 +17,10 @@ const createCardElement = (data) => {
   const card = new Card(data, templateSelector, openFigurePopup); //создаём экземпляр карточки
   return card.generateCard(); //создаём карточку и возвращаем её на страницу
 };
-
+const popupWithImage = new PopupWithImage('.popup_type_figure');
+  popupWithImage.setEventListeners();
 //функция открытия попапа с картинкой
 const openFigurePopup = (name, link) => {
-  const popupWithImage = new PopupWithImage('.popup_type_figure');
-  popupWithImage.setEventListeners();
   popupWithImage.open(name, link);
 };
 
@@ -47,16 +46,8 @@ popupNewCardClass.setEventListeners();
 //функция обработчик для сабмита попапа добавления карточки
 function addCardSubmitHandler(formData) {
   console.log(formData);
-  const name = formData.placeName;
-  const link = formData.placeURL;
   cardAddForm.reset();//очищаем поля формы
-
-  const cardData = {
-    name,
-    link,
-  };
-
-  renderCardElement.addItem(createCardElement(cardData));
+  renderCardElement.addItem(createCardElement(formData));
   popupNewCardClass.close();//закрыть попап
 }
 
@@ -69,12 +60,9 @@ popupAddCardOpenButton.addEventListener('click', () => {
 
 //функция обработчик для сабмита попапа редактирования профиля
 const editPopupSubmitHandler = (formData) => {
+  console.log(formData);
   //добавление данных из формы на страницу
-  userInfo.setUserInfo({
-    newName: formData.userName,
-    newDescription: formData.userDescription
-
-  })
+  userInfo.setUserInfo(formData);
   //закрытие формы
   popupEditProfileClass.close();
 };

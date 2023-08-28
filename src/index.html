@@ -35,9 +35,9 @@
       <button type="button" class="popup__close-button popup__close-button_profile" aria-label="Закрыть"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="form popup__edit-form" name="userData" novalidate>
-        <input id="username" type="text" name="userName" class="popup__input popup__input_type_name" required placeholder="Ваше имя" maxlength="40" minlength="2" autocomplete="off">
+        <input id="username" type="text" name="newName" class="popup__input popup__input_type_name" required placeholder="Ваше имя" maxlength="40" minlength="2" autocomplete="off">
         <span id="error-username" class="error-message username-error"></span>
-        <input id="description" type="text" name="userDescription" class="popup__input popup__input_type_description" required placeholder="О себе" maxlength="200" minlength="2" autocomplete="off">
+        <input id="description" type="text" name="newDescription" class="popup__input popup__input_type_description" required placeholder="О себе" maxlength="200" minlength="2" autocomplete="off">
         <span id="error-description" class="error-message description-error"></span>
         <button type="submit" class="popup__submit-button" >Сохранить</button>
       </form>
@@ -48,9 +48,9 @@
       <button type="button" class="popup__close-button popup__close-button_card" aria-label="Закрыть"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="form popup__add-form" name="addCard" novalidate>
-        <input id="placename" type="text" name="placeName" class="popup__input popup__input_type_card-name" required placeholder="Название" maxlength="30" minlength="2" autocomplete="off">
+        <input id="placename" type="text" name="name" class="popup__input popup__input_type_card-name" required placeholder="Название" maxlength="30" minlength="2" autocomplete="off">
         <span id="error-placename" class="error-message placename-error"></span>
-        <input id="url" type="url" name="placeURL" class="popup__input popup__input_type_card-url" required placeholder="Ссылка на картинку" autocomplete="off">
+        <input id="url" type="url" name="link" class="popup__input popup__input_type_card-url" required placeholder="Ссылка на картинку" autocomplete="off">
         <span id="error-url" class="error-message url-error"></span>
         <button type="submit" class="popup__submit-button">Создать</button>
       </form>

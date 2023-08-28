@@ -6,8 +6,8 @@ export default class UserInfo {
   // получение данных пользователя со страницы
   getUserInfo() {
     return {
-      userName: this._profileName.textContent,
-      userDescription: this._profileDescription.textContent
+      newName: this._profileName.textContent,
+      newDescription: this._profileDescription.textContent
     }
   }
   // добавление данных пользователя на страницу
