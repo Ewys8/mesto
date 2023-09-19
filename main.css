@@ -18,6 +18,8 @@
 .card__photo{background-color:#000;border-radius:10px 10px 0 0;color:#fff;height:282px;margin-bottom:25px;-o-object-fit:cover;object-fit:cover;width:282px}.card__photo:hover{cursor:pointer}
 .card__figcaption{align-items:center;display:flex;justify-content:space-between;margin:0 auto;padding-bottom:25px;width:calc(100% - 40px)}
 .card__title{font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:200px;overflow:hidden;text-align:left;text-overflow:ellipsis;white-space:nowrap}
+.card__like-element{display:flex;flex-direction:column}
+.card__like-count{color:#000;font-size:13px;font-weight:400;line-height:16px;margin:0;text-align:center}
 .card__like-button{background-color:transparent;background-image:url(images/like.1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;background-size:contain;border:none;height:19px;transition:opacity .1s ease-in-out;width:22px}.card__like-button:hover{cursor:pointer;opacity:50%}
 .card__like-button_active{background-image:url(images/active-like.dd6a61e81552be95f4b7.svg)}
 .card__delete-button{background-color:transparent;background-image:url(images/trash-icon.ce3b64935accf9b8212e.svg);background-repeat:no-repeat;background-size:contain;border:none;height:19px;position:absolute;right:20px;top:20px;width:18px}.card__delete-button:hover{cursor:pointer;opacity:60%}
