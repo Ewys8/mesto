@@ -14,7 +14,6 @@ export default class Card {
     this.cardDeleteButton = this._element.querySelector(".card__delete-button");
     this.cardLikeCount = this._element.querySelector(".card__like-count");
     this.openFigurePopup = openFigurePopup;
-    //this._openConfirmPopup = openConfirmPopup;
     this._handleDelete = handleDelete;
     this._handleLikeClickAdd = handleLikeClickAdd;
     this._handleLikeClickDelete = handleLikeClickDelete;
@@ -68,7 +67,8 @@ export default class Card {
 
   //метод удаления карточки
   delete() {
-    this._element.remove()
+    this._element.remove();
+    this._element = null;
   };
 
   _checkDeleteButton() {

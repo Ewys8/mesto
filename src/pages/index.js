@@ -21,6 +21,7 @@ const optionsApi = {
 const api = new Api(optionsApi);
 
 const userInfo = new UserInfo(configProfile);
+
 //задаем функцию создания карточки
 const createCardElement = (data) => {
   const card = new Card(data, templateSelector, openFigurePopup, 
@@ -38,13 +39,19 @@ const createCardElement = (data) => {
         })
         .catch((error) => { console.log(error) });
     },
-    handleDelete,
+    (cardId) => {
+      popupConfirm.open();
+      popupConfirm.setSubmit(() => {
+          api.deleteCard(cardId)
+              .then(() => {
+                  card.delete();
+                  popupConfirm.close()
+              })
+              .catch((error => console.error(`Не получилось удалить карточку ${error}`)))
+      })
+  },
     userId)
   return card.generateCard(); //создаём карточку и возвращаем её на страницу
-};
-
-function handleDelete(id)  {
-  popupConfirm.open(id);
 };
 
 const popupWithImage = new PopupWithImage('.popup_type_figure');
@@ -76,14 +83,7 @@ const popupEditAvatarClass = new PopupWithForm(
 );
 
 const popupConfirm = new PopupWithConfirmation(
-  '.popup_type_delete-confirm',
-  (cardId) => {
-    api.deleteCard(cardId)
-    .then(() => {
-      card.delete();
-    })
-    .catch((error) => { console.log(error) });
-  }
+  '.popup_type_delete-confirm'
 );
 
 //===========================_функции_обработчики_для_сабмита_попапов_==========================
@@ -131,19 +131,6 @@ function editAvatarSubmitHandler (formData) {
     popupEditAvatarClass.setSubmitButtonText('Создать');
   });
 };
-
-/*function confirmDeleteSubmitHandler (card) {
-  popupConfirm.formSubmitCallback((id) =>{
-    api.deleteCard(id)
-    .then(() => {
-      card.deleteCard();
-    })
-    .then(() => {
-      popupConfirm.close();
-    })
-    .catch((error) => {console.log(error)})
-  })
-};*/
 //=======================================================================================
 
 
@@ -189,7 +176,6 @@ popupConfirm.setEventListeners();
 Promise.all([api.getUserData(), api.getCards()])
   .then(([userData, cardsData]) => {
     userId = userData._id;
-    //cardsData.forEach(item => item.myId = userData._id); 
     // получение информации о пользователе
     userInfo.setId(userData._id);
     userInfo.setUserInfo({ newName: userData.name, newDescription: userData.about});
