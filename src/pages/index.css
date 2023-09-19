@@ -26,6 +26,8 @@
 
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
+@import url(../blocks/profile/__avatar-button/profile__avatar-button.css);
+
 @import url(../blocks/gallery/gallery.css);
 
 @import url(../blocks/card/card.css);
@@ -35,6 +37,10 @@
 @import url(../blocks/card/__figcaption/card__figcaption.css);
 
 @import url(../blocks/card/__title/card__title.css);
+
+@import url(../blocks/card/__like-element/card__like-element.css);
+
+@import url(../blocks/card/__like-count/card__like-count.css);
 
 @import url(../blocks/card/__like-button/card__like-button.css);
 
