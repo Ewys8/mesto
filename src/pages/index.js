@@ -1,5 +1,5 @@
 import { config, userInfoEditButton, userInfoEditForm, popupAddCardOpenButton, cardAddForm,
-templateSelector, gallery, configProfile, popupAvatarEditButton, userAvatarEditForm  } from "../utils/constants.js"; //импортируем данные карточек
+templateSelector, gallery, configProfile, popupAvatarEditButton, userAvatarEditForm, optionsApi } from "../utils/constants.js"; //импортируем данные карточек
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -11,13 +11,7 @@ import Api from "../components/Api.js";
 import './index.css';
 let userId;
 
-const optionsApi = {
-  url: 'https://mesto.nomoreparties.co/v1/cohort-75',
-  headers: {
-    authorization: 'a3be5fd8-a845-485e-b459-773d089bf2dd',
-    'Content-Type': 'application/json'
-  }
-}
+
 const api = new Api(optionsApi);
 
 const userInfo = new UserInfo(configProfile);
@@ -42,12 +36,16 @@ const createCardElement = (data) => {
     (cardId) => {
       popupConfirm.open();
       popupConfirm.setSubmit(() => {
+        popupConfirm.setSubmitButtonText('Удаление...');
           api.deleteCard(cardId)
               .then(() => {
                   card.delete();
                   popupConfirm.close()
               })
               .catch((error => console.error(`Не получилось удалить карточку ${error}`)))
+              .finally(() => {
+                popupConfirm.setSubmitButtonText('Да');
+              });
       })
   },
     userId)

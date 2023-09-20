@@ -26,7 +26,14 @@ const config = {
   const templateSelector = document.querySelector('#card-template') //темплейт
   const gallery = document.querySelector('.gallery') //галерея
 
+  const optionsApi = {
+    url: 'https://mesto.nomoreparties.co/v1/cohort-75',
+    headers: {
+      authorization: 'a3be5fd8-a845-485e-b459-773d089bf2dd',
+      'Content-Type': 'application/json'
+    }
+  }
 
 export { config, userInfoEditButton, userInfoEditForm,
   popupAddCardOpenButton, cardAddForm, templateSelector, gallery, configProfile,
-  popupAvatarEditButton, userAvatarEditForm };
+  popupAvatarEditButton, userAvatarEditForm, optionsApi };

@@ -3,6 +3,7 @@ export default class PopupWithConfirmation extends Popup {
     constructor(popupSelector) {
         super(popupSelector);
         this._form = this._popup.querySelector('.form');
+        this._submitButton = this._form.querySelector('.popup__submit-button');
 }
     setSubmit(submitForm){
         this._submitForm = submitForm
@@ -12,7 +13,10 @@ export default class PopupWithConfirmation extends Popup {
         this._form.addEventListener("submit", (evt) => {
         evt.preventDefault();
         this._submitForm();
-        this.close();
         });
+    }
+
+    setSubmitButtonText(text) {
+        this._submitButton.textContent = text;
     }
 }

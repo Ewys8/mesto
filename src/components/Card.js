@@ -29,6 +29,7 @@ export default class Card {
     this.cardTitle.textContent = this._name;
     this.cardPhoto.src = this._link;
     this.cardPhoto.alt = this._name;
+    this._checkUserLike();
     this._checkDeleteButton();
     this._setLikes();
     this._setEventListeners();
@@ -46,6 +47,15 @@ export default class Card {
 
   _setLikes() {
     this.cardLikeCount.textContent = this._likes.length;
+  };
+
+  _checkUserLike() {
+    this._likes.forEach(card => {
+        if (card._id === this._myId) {
+            this.cardLikeButton.classList.add('card__like-button_active')
+            return
+        }
+    })
   };
 
   addLike(data) {
